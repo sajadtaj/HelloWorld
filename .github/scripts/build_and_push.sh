@@ -3,7 +3,7 @@
 set -e
 
 VERSION=$1
-IMAGE_NAME=sajadtaj/helloworld
+IMAGE_NAME=xirana/helloworld
 
 echo "🛠 Building Docker image with tag: $VERSION"
 
