@@ -105,6 +105,7 @@ chmod +x .github/scripts/build_and_push.sh
 📄 مسیر: `.github/workflows/release.yml`
 
 ```yaml
+
 name: Release
 
 on:
@@ -114,27 +115,26 @@ on:
 
 jobs:
   release:
-    name: Semantic Release & Docker Build
+    name: Semantic Release
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          persist-credentials: false
+          fetch-depth: 0
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Run Semantic Release
+      - name: Run semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: npx semantic-release
+
 ```
 
 📌 **هدف:**
@@ -154,9 +154,7 @@ jobs:
 #### مراحل:
 
 1. ورود به: [https://github.com/settings/tokens](https://github.com/settings/tokens)
-
 2. انتخاب: `Generate new token (classic)`
-
 3. مقداردهی:
 
    * **Note:** `semantic-release for HelloWorld`
@@ -165,7 +163,6 @@ jobs:
 
      * ✅ `repo`
      * ✅ `workflow` (اختیاری ولی بهتر)
-
 4. پس از ساخت، توکن را کپی کن. مثال:
 
    ```
@@ -198,10 +195,10 @@ jobs:
 2. مسیر: `Settings → Secrets and variables → Actions → New repository secret`
 3. سه مورد را اضافه کن:
 
-| Secret Name          | مقدار                       |
-| -------------------- | --------------------------- |
-| `GH_TOKEN`           | توکن GitHub ساخته‌شده       |
-| `DOCKERHUB_USERNAME` | نام کاربری DockerHub        |
+| Secret Name            | مقدار                                 |
+| ---------------------- | ------------------------------------------ |
+| `GH_TOKEN`           | توکن GitHub ساخته‌شده         |
+| `DOCKERHUB_USERNAME` | نام کاربری DockerHub              |
 | `DOCKERHUB_TOKEN`    | توکن ساخته‌شده در DockerHub |
 
 ---
@@ -226,11 +223,11 @@ git push origin master
 
 ## 🧠 نکات حرفه‌ای
 
-| نکته                                                        | توضیح                              |
-| ----------------------------------------------------------- | ---------------------------------- |
+| نکته                                                                                | توضیح                                          |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | فقط `feat`, `fix`, `BREAKING CHANGE` باعث ساخت نسخه می‌شوند | commit message باید استاندارد باشد |
-| می‌توان نسخه `latest` را هم در کنار `v1.2.3` push کرد       | با تغییر `build_and_push.sh`       |
-| برای پروژه‌های مختلف فقط یک GH\_TOKEN نیاز است              | اما باید در هر repo تعریف شود      |
+| می‌توان نسخه `latest` را هم در کنار `v1.2.3` push کرد       | با تغییر `build_and_push.sh`               |
+| برای پروژه‌های مختلف فقط یک GH\_TOKEN نیاز است            | اما باید در هر repo تعریف شود    |
 
 ---
 
@@ -240,4 +237,3 @@ git push origin master
 docker pull sajadtaj/helloworld:v1.0.0
 docker run -it sajadtaj/helloworld:v1.0.0
 ```
-
