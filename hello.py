@@ -1,2 +1,2 @@
-name = input("اسم شما چیست؟ ")
-print(f"سلام {name}، به دنیای داکر خوش آمدی!")
+name = input(" whats your name?")
+print(f"Hello {name}، Wellcome to my world ...")
