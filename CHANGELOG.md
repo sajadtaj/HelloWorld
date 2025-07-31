@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/sajadtaj/HelloWorld/compare/v1.0.0...v1.1.0) (2025-07-31)
+
+
+### Features
+
+* Set new Feat ([cccdfa9](https://github.com/sajadtaj/HelloWorld/commit/cccdfa9d3ee8683a850fbdd34f59da7ddb8659b8))
+
 # 1.0.0 (2025-07-31)
 
 
