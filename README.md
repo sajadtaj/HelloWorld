@@ -1,5 +1,6 @@
-# 📘 مستند جامع تنظیم نسخه‌دهی خودکار (Semantic Release) برای پروژه‌های Docker با GitHub Actions
-
+# (Semantic Release) Docker & GitHub Actions
+## Set Auto Tag : image tag & git tag
+  
 ---
 
 ## 🎯 هدف پروژه
