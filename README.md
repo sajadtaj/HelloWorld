@@ -145,6 +145,38 @@ jobs:
 * نصب semantic-release
 * انجام فرآیند نسخه‌دهی و انتشار تصویر داکر
 
+
+### ✅ 4. فایل `package.json`
+
+```json
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "semantic-release": "^22.0.0",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/release-notes-generator": "^12.0.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/github": "^9.0.0",
+    "@semantic-release/exec": "^6.0.3"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sajadtaj/HelloWorld.git"
+  }
+}
+
+```
+
 ---
 
 ## 🔐 بخش ۲: تنظیم Tokenها و Secrets در GitHub
@@ -232,11 +264,15 @@ git push origin master
 | برای پروژه‌های مختلف فقط یک GH\_TOKEN نیاز است            | اما باید در هر repo تعریف شود    |
 
 ---
+
 #### 📦 نمونه تصویر ساخته‌شده در سیستم اوکال
+
 ‍
+
 ```bash
 docker images  # دیدن ایمیج های موجود
 ```
+
 output:
 
     REPOSITORY             TAG       IMAGE ID       CREATED        SIZE
@@ -255,14 +291,6 @@ docker pull xirana/helloworld:v1.0.0
 docker run -it xirana/helloworld:v1.0.0
 ```
 
-
-### Addreess
-
-__Docker hub__ : https://hub.docker.com/repositories/xirana
-__Git hub__   : https://github.com/sajadtaj/HelloWorld
-
-
-
 ## Install act-cli
 
 ```bash
@@ -277,14 +305,14 @@ curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
 
 ```
 
-output : 
+output :
     nektos/act info checking GitHub for latest tag
     nektos/act info found version: 0.2.80 for v0.2.80/Linux/x86_64
     nektos/act info installed ./bin/act
 
 پیغام زیر به وضوح نشان می‌دهد که ابزار act با موفقیت دانلود شده ولی در مسیر PATH قرار نگرفته است:
 
-        nektos/act info installed ./bin/act
+    nektos/act info installed ./bin/act
 
 لذا باید فایل باینری انرا به مسیر باینری کاربر ببریم:
 
@@ -302,14 +330,14 @@ sajad@TAJ:~/All Project/temp/HelloWorld$ which act
 /usr/local/bin/act
 ```
 
-
 > نکته act: صورت پیش فرض فایلها را از  .env میخوانداگر اطلاعات مانن رمز ها در مسیر دیگری از پروژه مثل secret.env باشد باید در دستور انرا مشخص کنیم.
 
 ### *secret.env*
+
 ```bash
 GH_TOKEN=ghp_xxxx        # GitHub Token معتبر با repo + workflow access
 DOCKERHUB_USERNAME=xirana
-DOCKERHUB_TOKEN=dckr_xxxxx    
+DOCKERHUB_TOKEN=dckr_xxxxx  
 
 ```
 
@@ -323,7 +351,7 @@ act # یا بصورت پیش فرض از فایل .envپروژه
 output:
 
     sajad@TAJ:~/All Project/temp/HelloWorld$ act
-    INFO[0000] Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock' 
+    INFO[0000] Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'
     ? Please choose the default image you want to use with act:
       - Large size image: ca. 17GB download + 53.1GB storage, you will need 75GB of free disk space, snapshots of GitHub Hosted Runners without snap and pulled docker images
       - Medium size image: ~500MB, includes only necessary tools to bootstrap actions and aims to be compatible with most actions
@@ -340,11 +368,11 @@ output:
 
 ## ✅ توضیح دقیق سه گزینه:
 
-| گزینه      | حجم تقریبی                         | شامل ابزارها                                       | مزایا                                        | معایب                                           |
-| ---------- | ---------------------------------- | -------------------------------------------------- | -------------------------------------------- | ----------------------------------------------- |
-| **Large**  | 17GB دانلود / 75GB فضای ذخیره‌سازی | کامل‌ترین snapshot محیط GitHub Actions             | کاملاً مشابه runner رسمی GitHub              | بسیار حجیم، کند در دانلود                       |
-| **Medium** | \~500MB                            | ابزارهای پرکاربرد مثل Node.js، Python، Docker، Git | سریع‌تر، سبک‌تر، برای اکثر پروژه‌ها کافی است | ممکن است برای پروژه‌های خاص ناقص باشد           |
-| **Micro**  | <200MB                             | فقط Node.js                                        | بسیار سبک، سریع                              | فقط برای پروژه‌های Node.js بسیار ساده مناسب است |
+| گزینه       | حجم تقریبی                                    | شامل ابزارها                                                  | مزایا                                                                         | معایب                                                                       |
+| ---------------- | ------------------------------------------------------ | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **Large**  | 17GB دانلود / 75GB فضای ذخیره‌سازی | کامل‌ترین snapshot محیط GitHub Actions                      | کاملاً مشابه runner رسمی GitHub                                     | بسیار حجیم، کند در دانلود                                   |
+| **Medium** | \~500MB                                                | ابزارهای پرکاربرد مثل Node.js، Python، Docker، Git | سریع‌تر، سبک‌تر، برای اکثر پروژه‌ها کافی است | ممکن است برای پروژه‌های خاص ناقص باشد             |
+| **Micro**  | <200MB                                                 | فقط Node.js                                                           | بسیار سبک، سریع                                                       | فقط برای پروژه‌های Node.js بسیار ساده مناسب است |
 
 ---
 
@@ -442,3 +470,7 @@ act -j release --secret-file secrets.env
 
 ---
 
+### Addreess
+
+__Docker hub__ : https://hub.docker.com/repositories/xirana
+__Git hub__   : https://github.com/sajadtaj/HelloWorld
