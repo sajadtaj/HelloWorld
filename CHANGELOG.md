@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/sajadtaj/HelloWorld/compare/v1.1.0...v1.2.0) (2025-08-01)
+
+
+### Features
+
+* test  Modify README ([a9f6c42](https://github.com/sajadtaj/HelloWorld/commit/a9f6c42a3a77f217c61913509d26bc457f78e737))
+
 # [1.1.0](https://github.com/sajadtaj/HelloWorld/compare/v1.0.0...v1.1.0) (2025-07-31)
 
 
