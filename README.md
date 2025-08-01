@@ -28,6 +28,10 @@
 │   │   └── release.yml
 │   └── scripts/
 │       └── build_and_push.sh
+├── .gitignore
+├── secret.env
+├── README
+└── CHANGELOG.md
 ```
 
 ---
