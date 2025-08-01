@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/sajadtaj/HelloWorld/compare/v1.2.0...v1.2.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* problrm in hello.py ([71ecacb](https://github.com/sajadtaj/HelloWorld/commit/71ecacb870fb44e566f2fb88eb07b6c9b669e5b0))
+
 # [1.2.0](https://github.com/sajadtaj/HelloWorld/compare/v1.1.0...v1.2.0) (2025-08-01)
 
 
