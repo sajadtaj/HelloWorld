@@ -1,8 +1,29 @@
 # Semantic Release
 + ### Docker & GitHub Actions
++ ### Set Auto Tag : image tag & git tag
 
-## Set Auto Tag : image tag & git tag
 
+```mermaid
+flowchart TD
+    A[تغییر در کد / Commit جدید] --> B[Push به GitHub]
+    B --> C[GitHub Actions CI/CD شروع می‌شود]
+
+    C --> D[semantic-release اجرا می‌شود]
+    D --> D1[تحلیل commit messageها]
+    D1 --> D2[تشخیص نوع نسخه جدید major / minor / patch]
+    D2 --> D3[ایجاد Git Tag جدید]
+
+    D3 --> E[ساخت Docker Image با نسخه جدید]
+    E --> E1[docker build -t project-name:VERSION]
+
+    E1 --> F[ورود به DockerHub]
+    F --> G[docker push project-name:VERSION]
+
+    G --> H[پایان موفق فرآیند CI/CD]
+
+    style A fill:#f9f,stroke:#333,stroke-width:1px
+    style H fill:#cfc,stroke:#333,stroke-width:1px
+```
 ---
 
 ## 🎯 هدف پروژه
