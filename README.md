@@ -575,3 +575,40 @@ act -j release --secret-file secrets.env
 
 __Docker hub__ : https://hub.docker.com/repositories/xirana
 __Git hub__   : https://github.com/sajadtaj/Semantic-Release-and-Act-Cli
+
+
+## خطا در هنگام پوش کردن
+
+</div>
+
+```bash
+
+╭─    ~/All /Semantic Release & Act Cli  on   master +1
+╰─ git commit -m "doc: modify urls"                                                      ─╯
+git push origin master
+
+```
+output:
+
+    [master 571366c] doc: modify urls
+    1 file changed, 1 insertion(+), 1 deletion(-)
+    To https://github.com/sajadtaj/Semantic-Release-and-Act-Cli.git
+    ! [rejected]        master -> master (fetch first)
+    error: failed to push some refs to 'https://github.com/sajadtaj/Semantic-Release-and-Act-Cli.git'
+    hint: Updates were rejected because the remote contains work that you do
+    hint: not have locally. This is usually caused by another repository pushing
+    hint: to the same ref. You may want to first integrate the remote changes
+    hint: (e.g., 'git pull ...') before pushing again.
+    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
+## راه حل
++ تغییرات را همیشه اول از مخزن بگیر
++ بعد پوش کن
+
+```
+╭─    ~/All /Semantic Release & Act Cli  on   master ⇡1
+╰─ git pull --rebase origin master                                                       ─╯
+git push origin master
+
+```
