@@ -1,7 +1,7 @@
 # Semantic Release
+
 + ### Docker & GitHub Actions
 + ### Set Auto Tag : image tag & git tag
-
 
 ```mermaid
 flowchart TD
@@ -24,6 +24,7 @@ flowchart TD
     style A fill:#f9f,stroke:#333,stroke-width:1px
     style H fill:#cfc,stroke:#333,stroke-width:1px
 ```
+
 ---
 
 ## 🎯 هدف پروژه
@@ -171,7 +172,6 @@ jobs:
 * نصب semantic-release
 * انجام فرآیند نسخه‌دهی و انتشار تصویر داکر
 
-
 ### ✅ 4. فایل `package.json`
 
 ```json
@@ -240,7 +240,7 @@ jobs:
 #### `DOCKERHUB_TOKEN`:
 
 1. ورود به [https://hub.docker.com](https://hub.docker.com)
-2. مسیر: `Account Settings → Security → Access Tokens`
+2. مسیر: `Account Settings → Security → Personal access Tokens`
 3. دکمه: `New Access Token`
 
    * Description: `semantic-release`
