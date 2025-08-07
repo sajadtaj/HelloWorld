@@ -1,4 +1,5 @@
-# (Semantic Release) Docker & GitHub Actions
+# Semantic Release
++ ### Docker & GitHub Actions
 
 ## Set Auto Tag : image tag & git tag
 
