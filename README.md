@@ -147,11 +147,16 @@ jobs:
     name: Semantic Release
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write    # برای push و tag
+      issues: write
+      pull-requests: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          persist-credentials: false 
           fetch-depth: 0
 
       - name: Install dependencies
@@ -159,7 +164,8 @@ jobs:
 
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: npx semantic-release
@@ -202,11 +208,11 @@ jobs:
 }
 
 ```
+
 <div dir="rtl">
 ---
 
 ## 🔐 بخش ۲: تنظیم Tokenها و Secrets در GitHub
-
 
 برای اینکه ابزار `semantic-release` بتواند **به‌درستی تگ نسخه جدید ایجاد کند و آن را به ریموت GitHub push کند**، باید GitHub Actions به مخزن دسترسی کامل (read/write) داشته باشد. در صورت نداشتن این مجوز، با خطای زیر مواجه می‌شوید:
 
@@ -223,7 +229,6 @@ semantic-release cannot push the version tag to the branch master
 
 در فایل `.github/workflows/release.yml`، بخش مربوط به job باید حتماً شامل `permissions` با مقدار `contents: write` باشد:
 
-
 </div>
 
 ```yaml
@@ -234,6 +239,7 @@ jobs:
     permissions:
       contents: write  # ✅ اجازه push و tag در مخزن
 ```
+
 <div dir="rtl">
 
 این بخش، به GitHub Actions اجازه می‌دهد:
@@ -248,7 +254,6 @@ jobs:
 
 در همان job، از متغیر پیش‌فرض `GITHUB_TOKEN` استفاده کنید. نیازی به تعریف دستی نیست، فقط کافی‌ست آن را در `env` معرفی کنید:
 
-
 </div>
 
 ```yaml
@@ -258,6 +263,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ فعال‌سازی احراز هویت داخلی GitHub
         run: npx semantic-release
 ```
+
 <div dir="rtl">
 
 > **توجه:** `secrets.GITHUB_TOKEN` یک توکن اتوماتیک است که GitHub در زمان اجرای workflow تولید می‌کند. نیازی به ساخت یا ثبت در Secrets نیست.
@@ -287,12 +293,12 @@ Settings → Actions → General → Workflow permissions
 
 ## 🛡 بدون این تنظیمات چه اتفاقی می‌افتد؟
 
-| تنظیم                                    | اثر در اجرا                                |
-| ---------------------------------------- | ------------------------------------------ |
-| `permissions.contents` حذف شده باشد      | GitHub Token مجوز push ندارد               |
-| `GITHUB_TOKEN` تعریف نشده باشد           | semantic-release نمی‌تواند احراز هویت کند  |
+| تنظیم                                                 | اثر در اجرا                                             |
+| ---------------------------------------------------------- | ---------------------------------------------------------------- |
+| `permissions.contents` حذف شده باشد            | GitHub Token مجوز push ندارد                            |
+| `GITHUB_TOKEN` تعریف نشده باشد              | semantic-release نمی‌تواند احراز هویت کند   |
 | سطح دسترسی workflow روی `Read-only` باشد | عملیات `git push` و `git tag` مسدود می‌شود |
-| استفاده از `GH_TOKEN` بدون PAT صحیح      | عملیات با شکست مواجه می‌شود                |
+| استفاده از `GH_TOKEN` بدون PAT صحیح     | عملیات با شکست مواجه می‌شود               |
 
 ---
 
