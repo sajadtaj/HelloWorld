@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/sajadtaj/Semantic-Release-and-Act-Cli/compare/v1.3.0...v1.3.1) (2025-08-07)
+
+
+### Bug Fixes
+
+* تست انتشار خودکار ([2e264cd](https://github.com/sajadtaj/Semantic-Release-and-Act-Cli/commit/2e264cd3f1c5d8dae3bf484496f276d894ca2af0))
+
 # [1.3.0](https://github.com/sajadtaj/Semantic-Release-and-Act-Cli/compare/v1.2.0...v1.3.0) (2025-08-07)
 
 
