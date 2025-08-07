@@ -14,7 +14,7 @@ jobs:
       contents: write    # برای push و tag
       issues: write
       pull-requests: write
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,7 +27,8 @@ jobs:
 
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: npx semantic-release
